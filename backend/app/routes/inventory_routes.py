@@ -6,16 +6,25 @@ inventory_bp = Blueprint('inventory', __name__)
 
 @inventory_bp.route('/all', methods=['GET'])
 def get_inventory():
-    return jsonify(InventoryService.get_all_inventory())
+    try:
+        return jsonify(InventoryService.get_all_inventory())
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @inventory_bp.route('/create', methods=['POST'])
 def add_inventory_item():
-    data = request.get_json()
-    return InventoryService.add_inventory_item(data)
+    try:
+        data = request.get_json()
+        return InventoryService.add_inventory_item(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @inventory_bp.route('/update/<item_id>', methods=['PUT'])
 def update_inventory_item(item_id):
-    data = request.get_json()
-    return InventoryService.update_inventory_item(item_id, data)
+    try:
+        data = request.get_json()
+        return InventoryService.update_inventory_item(item_id, data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

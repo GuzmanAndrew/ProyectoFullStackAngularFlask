@@ -1,7 +1,11 @@
 <div class="container mt-5">
    <div class="card shadow-sm">
       <div class="card-body p-4">
-         <h2 class="text-center mb-4">Registro de inventario</h2>
+
+         <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Registro de inventario</h2>
+            <a class="btn btn-primary" [routerLink]="['/deliver']">Ir a entregas</a>
+         </div>
 
          <form [formGroup]="productForm" (ngSubmit)="saveInventory()">
             <div class="form-group mb-3">
