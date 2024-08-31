@@ -13,7 +13,7 @@ class ProductTypeService:
     def create_product_type(data):
         new_product_type = ProductType(
             nombre_producto=data['nombre_producto'],
-            numero_serie=data.get('numero_serie')
+            codigo_unico=data.get('codigo_unico')
         )
         db.session.add(new_product_type)
         db.session.commit()
@@ -24,5 +24,5 @@ class ProductTypeService:
         return {
             "id_producto": product_type.id_producto,
             "nombre_producto": product_type.nombre_producto,
-            "numero_serie": product_type.numero_serie
+            "codigo_unico": product_type.numero_serie
         }

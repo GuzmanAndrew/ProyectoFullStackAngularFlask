@@ -12,22 +12,18 @@ export class InventoryService {
   constructor(private http: HttpClient) { }
 
   getProductTypes(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/product-types`);
-  }
-
-  addProductType(productType: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/product-types`, productType);
+    return this.http.get(`${this.apiUrl}/product-types/all`);
   }
 
   getInventory(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/inventory`);
+    return this.http.get(`${this.apiUrl}/inventory/all`);
   }
 
   addInventoryItem(item: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/inventory`, item);
+    return this.http.post(`${this.apiUrl}/inventory/create`, item);
   }
 
   updateInventoryItem(id: string, item: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/inventory/${id}`, item);
+    return this.http.put(`${this.apiUrl}/inventory/update/${id}`, item);
   }
 }

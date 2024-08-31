@@ -6,4 +6,4 @@ class ProductType(db.Model):
 
     id_producto = db.Column(db.Integer, primary_key=True)
     nombre_producto = db.Column(db.String(100), nullable=False)
-    numero_serie = db.Column(db.String(100), nullable=False)
+    codigo_unico = db.Column(db.String(100), nullable=False)

@@ -1,23 +1,29 @@
-from app.utils.db import mongo
+from bson import ObjectId
 
 
 class InventoryItem:
-    def __init__(self, id_producto, cantidad, estado):
-        self.id_producto = id_producto
-        self.cantidad = cantidad
-        self.estado = estado
+    def __init__(self, usuario, nombre_producto, numero_serie, fecha_entrega, status):
+        self.usuario = usuario
+        self.nombre_producto = nombre_producto
+        self.numero_serie = numero_serie
+        self.fecha_entrega = fecha_entrega
+        self.status = status
 
     def to_dict(self):
         return {
-            "id_producto": self.id_producto,
-            "cantidad": self.cantidad,
-            "estado": self.estado
+            "usuario": self.usuario,
+            "nombre_producto": self.nombre_producto,
+            "numero_serie": self.numero_serie,
+            "fecha_entrega": self.fecha_entrega,
+            "status": self.status
         }
 
     @staticmethod
     def from_dict(data):
         return InventoryItem(
-            id_producto=data.get('id_producto'),
-            cantidad=data.get('cantidad'),
-            estado=data.get('estado')
+            usuario=data.get('usuario'),
+            nombre_producto=data.get('nombre_producto'),
+            numero_serie=data.get('numero_serie'),
+            fecha_entrega=data.get('fecha_entrega'),
+            status=data.get('status')
         )

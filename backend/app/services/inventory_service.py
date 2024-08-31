@@ -18,7 +18,12 @@ class InventoryService:
 
     @staticmethod
     def update_inventory_item(item_id, data):
-        mongo.db.inventario.update_one({'_id': ObjectId(item_id)}, {'$set': data})
+        status = data.get('status')
+        if status is not None:
+            mongo.db.inventario.update_one(
+                {'_id': ObjectId(item_id)},
+                {'$set': {'status': status}}
+            )
         return InventoryService.to_dict(mongo.db.inventario.find_one({'_id': ObjectId(item_id)}))
 
     @staticmethod
