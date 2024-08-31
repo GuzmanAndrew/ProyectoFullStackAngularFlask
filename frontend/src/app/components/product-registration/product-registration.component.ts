@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { InventoryService } from '../../services/inventory.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-registration',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './product-registration.component.html',
   styleUrl: './product-registration.component.css'
 })
@@ -46,7 +48,20 @@ export class ProductRegistrationComponent implements OnInit {
       };
 
       this.inventoryService.addInventoryItem(newInventoryItem).subscribe(() => {
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'Inventario guardado con éxito.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
         this.productForm.reset();
+      }, error => {
+        Swal.fire({
+          title: 'Error',
+          text: 'Hubo un problema al guardar el inventario.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
       });
     }
   }

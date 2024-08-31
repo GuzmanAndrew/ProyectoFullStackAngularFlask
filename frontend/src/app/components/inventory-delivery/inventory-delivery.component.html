@@ -1,9 +1,13 @@
-<div class="inventory-delivery">
-   <h2>Entregar Inventario</h2>
-   <div *ngFor="let item of inventoryItems" [class.delivered]="item.status === 'Entregado'" class="inventory-item">
-      <p>{{ item.nombre_producto }}</p>
-      <p>{{ item.numero_serie }}</p>
-      <button *ngIf="item.status === 'Pendiente'" (click)="deliverItem(item)">Entregar</button>
-      <p *ngIf="item.status === 'Entregado'">Entregado</p>
+<div class="container mt-4">
+   <h2 class="text-center mb-4">Entregar Inventario</h2>
+   <div *ngFor="let item of inventoryItems" class="card mb-3"
+      [ngClass]="{'bg-success text-white': item.status === 'Entregado', 'bg-primary text-white': item.status === 'Pendiente'}">
+      <div class="card-body text-white">
+         <h5 class="card-title">{{ item.nombre_producto }}</h5>
+         <p class="card-text">{{ item.numero_serie }}</p>
+         <button *ngIf="item.status === 'Pendiente'" (click)="deliverItem(item)"
+            class="btn btn-dark w-100">Entregar</button>
+         <p *ngIf="item.status === 'Entregado'" class="card-text">Entregado</p>
+      </div>
    </div>
 </div>
