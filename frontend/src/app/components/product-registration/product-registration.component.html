@@ -1,0 +1,31 @@
+<div class="container mt-5">
+   <div class="card shadow-sm">
+      <div class="card-body p-4">
+         <h2 class="text-center mb-4">Registro de inventario</h2>
+
+         <form [formGroup]="productForm" (ngSubmit)="saveInventory()">
+            <div class="form-group mb-3">
+               <label for="selectedProduct" class="form-label">Producto:</label>
+               <select id="selectedProduct" formControlName="selectedProduct" class="form-select">
+                  <option *ngFor="let product of productTypes" [value]="product.id">
+                     {{ product.nombre_producto }}
+                  </option>
+               </select>
+            </div>
+
+            <div class="form-group mb-3">
+               <label for="serialNumber" class="form-label">Número de serie:</label>
+               <input id="serialNumber" type="text" formControlName="serialNumber" class="form-control" />
+            </div>
+
+            <div class="form-group mb-3">
+               <label for="deliveryDate" class="form-label">Fecha de entrega:</label>
+               <input id="deliveryDate" type="date" formControlName="deliveryDate" class="form-control" />
+            </div>
+
+            <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary btn-block">Guardar y
+               enviar</button>
+         </form>
+      </div>
+   </div>
+</div>

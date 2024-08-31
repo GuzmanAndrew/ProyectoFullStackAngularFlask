@@ -1,0 +1,9 @@
+<div class="inventory-delivery">
+   <h2>Entregar Inventario</h2>
+   <div *ngFor="let item of inventoryItems" [class.delivered]="item.status === 'Delivered'" class="inventory-item">
+      <p>{{ item.product_type_id }}</p>
+      <p>{{ item.numero_serie }}</p>
+      <button *ngIf="item.status === 'Pending'" (click)="deliverItem(item)">Entregar</button>
+      <p *ngIf="item.status === 'Delivered'">Entregado</p>
+   </div>
+</div>

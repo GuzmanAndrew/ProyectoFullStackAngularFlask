@@ -1,0 +1,35 @@
+.inventory-delivery {
+   background-color: #d4e4fc;
+   padding: 20px;
+   border-radius: 8px;
+}
+
+.inventory-delivery h2 {
+   text-align: center;
+}
+
+.inventory-item {
+   background-color: #007bff;
+   color: white;
+   padding: 10px;
+   border-radius: 5px;
+   margin: 10px 0;
+}
+
+.inventory-item.delivered {
+   background-color: #28a745;
+}
+
+.inventory-item button {
+   background-color: #0056b3;
+   color: white;
+   padding: 5px;
+   border: none;
+   border-radius: 5px;
+   display: block;
+   width: 100%;
+}
+
+.inventory-item button:hover {
+   background-color: #003d7a;
+}
