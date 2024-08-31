@@ -22,14 +22,13 @@ export class InventoryDeliveryComponent implements OnInit {
   loadInventory(): void {
     this.inventoryService.getInventory().subscribe(data => {
       console.log("INVENTARIO: " + JSON.stringify(data));
-
       this.inventoryItems = data;
     });
   }
 
   deliverItem(item: any): void {
-    if (item.status === 'Pending') {
-      this.inventoryService.updateInventoryItem(item._id, { status: 'Delivered' }).subscribe(() => {
+    if (item.status === 'Pendiente') {
+      this.inventoryService.updateInventoryItem(item._id, { status: 'Entregado' }).subscribe(() => {
         this.loadInventory();
       });
     }

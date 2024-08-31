@@ -24,5 +24,5 @@ class ProductTypeService:
         return {
             "id_producto": product_type.id_producto,
             "nombre_producto": product_type.nombre_producto,
-            "codigo_unico": product_type.numero_serie
+            "codigo_unico": product_type.codigo_unico
         }

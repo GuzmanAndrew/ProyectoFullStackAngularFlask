@@ -5,9 +5,14 @@
 
          <form [formGroup]="productForm" (ngSubmit)="saveInventory()">
             <div class="form-group mb-3">
+               <label for="username" class="form-label">Nombre de usuario:</label>
+               <input id="username" type="text" formControlName="username" class="form-control" />
+            </div>
+
+            <div class="form-group mb-3">
                <label for="selectedProduct" class="form-label">Producto:</label>
                <select id="selectedProduct" formControlName="selectedProduct" class="form-select">
-                  <option *ngFor="let product of productTypes" [value]="product.id">
+                  <option *ngFor="let product of productTypes" [value]="product.nombre_producto">
                      {{ product.nombre_producto }}
                   </option>
                </select>

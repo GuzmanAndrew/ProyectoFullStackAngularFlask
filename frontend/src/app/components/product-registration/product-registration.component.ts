@@ -17,6 +17,7 @@ export class ProductRegistrationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private inventoryService: InventoryService) {
     this.productForm = this.fb.group({
+      username: ['', Validators.required],
       selectedProduct: ['', Validators.required],
       serialNumber: ['', Validators.required],
       deliveryDate: ['', Validators.required]
@@ -37,10 +38,11 @@ export class ProductRegistrationComponent implements OnInit {
   saveInventory(): void {
     if (this.productForm.valid) {
       const newInventoryItem = {
-        product_type_id: this.productForm.get('selectedProduct')?.value,
+        usuario: this.productForm.get('username')?.value,
+        nombre_producto: this.productForm.get('selectedProduct')?.value,
         numero_serie: this.productForm.get('serialNumber')?.value,
-        delivery_date: this.productForm.get('deliveryDate')?.value,
-        status: 'Pending'
+        fecha_entrega: this.productForm.get('deliveryDate')?.value,
+        status: 'Pendiente'
       };
 
       this.inventoryService.addInventoryItem(newInventoryItem).subscribe(() => {
